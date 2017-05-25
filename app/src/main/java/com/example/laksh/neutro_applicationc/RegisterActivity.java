@@ -14,11 +14,13 @@ public class RegisterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
         btnRegisterS= (Button)findViewById(R.id.btnRegister);
+
         btnRegisterS.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(RegisterActivity.this, HomeActivity.class));
+                startActivity(new Intent(RegisterActivity.this, Home_Activity.class));
             }
         });
+
     }
 }

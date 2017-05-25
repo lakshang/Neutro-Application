@@ -2,12 +2,12 @@ package com.example.laksh.neutro_applicationc;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.widget.Button;
 
-public class CalculateActivity extends AppCompatActivity {
+public class StatisticsActivity extends AppCompatActivity {
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_calculate);
+        setContentView(R.layout.activity_statistics);
     }
 }
