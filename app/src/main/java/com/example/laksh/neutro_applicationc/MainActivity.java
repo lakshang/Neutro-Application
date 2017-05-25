@@ -8,13 +8,17 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 ImageButton btnCalculate, btnStatistics, btnReminder, btnLogout;
 TextView ivProfile;
+FirebaseAuth auth;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        auth = FirebaseAuth.getInstance();
         btnCalculate = (ImageButton) findViewById(R.id.btnCalculate);
         btnStatistics = (ImageButton) findViewById(R.id.btnStatistics);
         btnReminder = (ImageButton) findViewById(R.id.btnReminder);
@@ -34,6 +38,13 @@ TextView ivProfile;
         });
         ivProfile.setOnClickListener(this);
 
+        btnLogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                auth.signOut();
+                startActivity(new Intent(MainActivity.this, LoginActivity.class));
+            }
+        });
 
     }
 

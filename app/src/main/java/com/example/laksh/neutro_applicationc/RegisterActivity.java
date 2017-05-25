@@ -26,7 +26,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
     private TextView viewLogin;
     private ProgressDialog progressD;
     private FirebaseAuth firebaseAuth;
-
+    private Boolean auth = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,11 +71,13 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                         if (task.isSuccessful()) {
                             //user successfully registerd
                             //profile activity
+                            auth=true;
                             finish();
-                            startActivity(new Intent(getApplicationContext(), LoginActivity.class));
-                            progressD.dismiss();
+                            startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
 //                           Toast.makeText(MainActivity.this, " Registration Successful ! ", Toast.LENGTH_SHORT).show();
-                        } else {
+                        }
+                        if (auth==false){
+                            Toast.makeText(RegisterActivity.this, " Registration Unsuccessful ! ", Toast.LENGTH_SHORT).show();
                         }
                     }
                 });

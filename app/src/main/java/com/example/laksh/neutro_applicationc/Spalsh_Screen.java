@@ -14,7 +14,7 @@ public class Spalsh_Screen extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent register = new Intent(Spalsh_Screen.this, MainActivity.class);
+                Intent register = new Intent(Spalsh_Screen.this, RegisterActivity.class);
                 startActivity(register);
                 finish();
             }
