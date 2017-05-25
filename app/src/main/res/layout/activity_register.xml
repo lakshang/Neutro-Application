@@ -4,12 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorOrangeLight"
+    android:background="@color/colorOrange"
     tools:context="com.example.laksh.neutro_applicationc.RegisterActivity">
 
     <LinearLayout
         android:layout_width="368dp"
         android:layout_height="551dp"
+        android:layout_marginRight="5dp"
         android:orientation="vertical"
         android:weightSum="1"
         tools:layout_editor_absoluteX="8dp"
@@ -17,12 +18,12 @@
 
         <ImageView
             android:id="@+id/imageView3"
-            android:layout_width="250dp"
+            android:layout_width="260dp"
             android:layout_height="143dp"
             android:layout_marginBottom="15dp"
             android:layout_marginLeft="60dp"
             android:layout_marginTop="40dp"
-            android:layout_weight="0.08"
+            android:layout_weight="0.13"
             android:adjustViewBounds="false"
             android:cropToPadding="false"
             app:srcCompat="@drawable/logo" />
@@ -42,7 +43,7 @@
             android:textStyle="normal|bold" />
 
         <EditText
-            android:id="@+id/editText"
+            android:id="@+id/txtEmailAddress"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="25dp"
@@ -70,7 +71,7 @@
             android:textStyle="normal|bold" />
 
         <EditText
-            android:id="@+id/editText3"
+            android:id="@+id/txtPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="15dp"
@@ -98,7 +99,7 @@
             android:typeface="sans" />
 
         <TextView
-            android:id="@+id/textView3"
+            android:id="@+id/viewLogin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
