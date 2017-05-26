@@ -95,7 +95,8 @@ private FirebaseAuth firebaseAuthentication;
             startActivity(new Intent(this, RegisterActivity.class));
         }
         if (v == viewResetPassword){
-
+            finish();
+            startActivity(new Intent(this, ResetPassword.class));
         }
     }
 }
