@@ -42,7 +42,7 @@
             android:textStyle="normal|bold" />
 
         <EditText
-            android:id="@+id/editText"
+            android:id="@+id/txtLEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="25dp"
@@ -53,7 +53,8 @@
             android:inputType="textEmailAddress"
             android:selectAllOnFocus="false"
             android:singleLine="false"
-            android:textColor="@color/colorGrey" />
+            android:textColor="@color/colorWhite"
+            android:textColorLink="@color/colorWhite" />
 
         <TextView
             android:id="@+id/textView2"
@@ -70,7 +71,7 @@
             android:textStyle="normal|bold" />
 
         <EditText
-            android:id="@+id/editText3"
+            android:id="@+id/txtLPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="15dp"
@@ -79,7 +80,8 @@
             android:layout_marginTop="3dp"
             android:ems="10"
             android:inputType="textPassword"
-            android:textColor="@color/colorGrey" />
+            android:textColor="@color/colorWhite"
+            android:textColorLink="@color/colorWhite" />
 
         <Button
             android:id="@+id/btnLogin"
@@ -98,14 +100,25 @@
             android:typeface="sans" />
 
         <TextView
-            android:id="@+id/textView3"
+            android:id="@+id/viewResetPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_weight="0.11"
+            android:text="Forgot your password?"
+            android:textAlignment="center"
+            android:textColor="@color/colorWhite" />
+
+        <TextView
+            android:id="@+id/tvRegister"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:fontFamily="sans-serif-condensed"
             android:text="No account yet? Create one"
             android:textAlignment="center"
-            android:textSize="14sp" />
+            android:textSize="15sp"
+            android:textStyle="bold" />
     </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>

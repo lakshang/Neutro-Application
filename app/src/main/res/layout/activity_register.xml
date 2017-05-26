@@ -54,7 +54,8 @@
             android:inputType="textEmailAddress"
             android:selectAllOnFocus="false"
             android:singleLine="false"
-            android:textColor="@color/colorGrey" />
+            android:textColor="@color/colorWhite"
+            android:textColorLink="@color/colorWhite" />
 
         <TextView
             android:id="@+id/textView2"
@@ -80,7 +81,8 @@
             android:layout_marginTop="3dp"
             android:ems="10"
             android:inputType="textPassword"
-            android:textColor="@color/colorGrey" />
+            android:textColor="@color/colorWhite"
+            android:textColorLink="@color/colorWhite" />
 
         <Button
             android:id="@+id/btnRegister"

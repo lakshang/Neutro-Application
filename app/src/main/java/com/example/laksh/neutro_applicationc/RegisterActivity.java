@@ -20,78 +20,78 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-public class RegisterActivity extends AppCompatActivity implements View.OnClickListener {
+public class RegisterActivity extends AppCompatActivity{
     private Button btnRegisterS;
     private EditText txtEmail, txtPassword;
     private TextView viewLogin;
-    private ProgressDialog progressD;
-    private FirebaseAuth firebaseAuth;
-    private Boolean auth = false;
+    private ProgressDialog progressDialog;
+    private FirebaseAuth auth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
-        firebaseAuth = FirebaseAuth.getInstance();
-        if (firebaseAuth.getCurrentUser() != null){
+
+        auth = FirebaseAuth.getInstance();
+        if (auth.getCurrentUser() !=null){
             finish();
-            startActivity(new Intent(this, MainActivity.class));
+            startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
         }
-        progressD = new ProgressDialog(this);
+
+        progressDialog = new ProgressDialog(this);
         btnRegisterS = (Button) findViewById(R.id.btnRegister);
         txtEmail = (EditText) findViewById(R.id.txtEmailAddress);
         txtPassword = (EditText) findViewById(R.id.txtPassword);
         viewLogin = (TextView) findViewById(R.id.viewLogin);
 
-        btnRegisterS.setOnClickListener(this);
-        viewLogin.setOnClickListener(this);
-
-
+        btnRegisterS.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+               registerUser();
+            }
+        });
+        viewLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
+            }
+        });
     }
-    private void registerUser() {
-        String uEmail = txtEmail.getText().toString().trim();
-        String uPassword = txtPassword.getText().toString().trim();
+    private void registerUser(){
+        String email = txtEmail.getText().toString().trim();
+        String password = txtPassword.getText().toString().trim();
 
-        if (TextUtils.isEmpty(uEmail)) {
+        if (TextUtils.isEmpty(email)){
             Toast.makeText(this, " Please enter Email ", Toast.LENGTH_LONG).show();
-            //stop the function
             return;
         }
-        if (TextUtils.isEmpty(uPassword)) {
+        if (TextUtils.isEmpty(password)){
             Toast.makeText(this, " Please enter Password ", Toast.LENGTH_LONG).show();
-            //stop the function
             return;
         }
-        progressD.setMessage(" Registering User....");
-        progressD.show();
-        firebaseAuth.createUserWithEmailAndPassword(uEmail, uPassword)
+        if (password.length() > 6){
+            Toast.makeText(this, " Invalid Password ! ", Toast.LENGTH_LONG).show();
+            return;
+        }
+
+        progressDialog.setMessage("Registering User....");
+        progressDialog.show();
+        auth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
-                            //user successfully registerd
-                            //profile activity
-                            auth=true;
+                        if (!task.isSuccessful()) {
+                            progressDialog.dismiss();
+                            finish();
+                            Toast.makeText(RegisterActivity.this, " Registration Failed ! ", Toast.LENGTH_LONG).show();
+                            return;
+                        }else{
+                            progressDialog.dismiss();
                             finish();
                             startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
-//                           Toast.makeText(MainActivity.this, " Registration Successful ! ", Toast.LENGTH_SHORT).show();
-                        }
-                        if (auth==false){
-                            Toast.makeText(RegisterActivity.this, " Registration Unsuccessful ! ", Toast.LENGTH_SHORT).show();
                         }
                     }
                 });
-    }
 
-    @Override
-    public void onClick(View v) {
-        if (v == btnRegisterS) {
-            registerUser();
-
-        }
-        if (v == viewLogin) {
-            //sign in
-            startActivity(new Intent(this, LoginActivity.class));
-        }
     }
 }
