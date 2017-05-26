@@ -35,11 +35,12 @@ private FirebaseAuth firebaseAuthentication;
         txtEmail = (EditText) findViewById(R.id.txtLEmail);
         txtPassword = (EditText) findViewById(R.id.txtLPassword);
         tvRegister = (TextView) findViewById(R.id.tvRegister);
-        viewResetPassword = (TextView) findViewById(R.id.viewResetPassword) ;
-        pd = new ProgressDialog(this);
+        viewResetPassword = (TextView) findViewById(R.id.viewReset) ;
 
+        pd = new ProgressDialog(this);
         btnLogin.setOnClickListener(this);
         tvRegister.setOnClickListener(this);
+        viewResetPassword.setOnClickListener(this);
 
         if(firebaseAuthentication.getCurrentUser()!=null){
             finish();
@@ -88,15 +89,15 @@ private FirebaseAuth firebaseAuthentication;
     public void onClick(View v) {
         if (v == btnLogin){
             userLogin();
-
+            finish();
         }
         if (v == tvRegister){
-            finish();
             startActivity(new Intent(this, RegisterActivity.class));
+            finish();
         }
         if (v == viewResetPassword){
-            finish();
             startActivity(new Intent(this, ResetPassword.class));
+            finish();
         }
     }
 }
