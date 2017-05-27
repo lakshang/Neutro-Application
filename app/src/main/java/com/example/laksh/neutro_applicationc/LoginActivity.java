@@ -89,7 +89,6 @@ private FirebaseAuth firebaseAuthentication;
     public void onClick(View v) {
         if (v == btnLogin){
             userLogin();
-            finish();
         }
         if (v == tvRegister){
             startActivity(new Intent(this, RegisterActivity.class));

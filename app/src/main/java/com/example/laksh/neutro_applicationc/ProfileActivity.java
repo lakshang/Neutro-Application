@@ -33,14 +33,18 @@ private FirebaseAuth firebaseAuth;
 private ProgressDialog progressDialog;
 private FirebaseUser User;
 private DatabaseReference dbReference;
+private  String userID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
 
+
         firebaseAuth = FirebaseAuth.getInstance();
-        dbReference = FirebaseDatabase.getInstance().getReference("Details");
+        dbReference = FirebaseDatabase.getInstance().getReference("Details").child(userID);
+        userID=firebaseAuth.getCurrentUser().getUid().toString();
+        System.out.println(userID);
         if (firebaseAuth.getCurrentUser() == null){
             finish();
             startActivity(new Intent(this, LoginActivity.class));
@@ -124,7 +128,6 @@ private DatabaseReference dbReference;
         public void onChildAdded(DataSnapshot dataSnapshot, String s) {
             String value = dataSnapshot.getValue().toString().trim();
             //txtBabyName.setText(value);
-
             for (String retrieve : value.split("[{}=,]")){
                dataArray.add(retrieve);
                 System.out.println(dataArray);
