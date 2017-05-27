@@ -75,7 +75,7 @@ private FirebaseAuth firebaseAuthentication;
                             finish();
                             pd.dismiss();
                             Toast.makeText(LoginActivity.this, " Invalid Email/ Password ! ", Toast.LENGTH_LONG).show();
-                            return;
+                            startActivity(new Intent(getApplicationContext(),LoginActivity.class));
                         }else{
                             pd.dismiss();
                             finish();

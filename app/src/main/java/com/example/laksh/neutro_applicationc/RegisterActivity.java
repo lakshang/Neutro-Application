@@ -69,7 +69,7 @@ public class RegisterActivity extends AppCompatActivity{
             Toast.makeText(this, " Please enter Password ", Toast.LENGTH_LONG).show();
             return;
         }
-        if (password.length() > 6){
+        if (password.length() < 6){
             Toast.makeText(this, " Invalid Password ! ", Toast.LENGTH_LONG).show();
             return;
         }
@@ -84,7 +84,7 @@ public class RegisterActivity extends AppCompatActivity{
                             progressDialog.dismiss();
                             finish();
                             Toast.makeText(RegisterActivity.this, " Registration Failed ! ", Toast.LENGTH_LONG).show();
-                            return;
+                            startActivity(new Intent(getApplicationContext(),RegisterActivity.class));
                         }else{
                             progressDialog.dismiss();
                             finish();

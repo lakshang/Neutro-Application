@@ -33,7 +33,7 @@
                 app:srcCompat="@drawable/pc" />
 
             <TextView
-                android:id="@+id/textView5"
+                android:id="@+id/viewUser"
                 android:layout_width="228dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="3dp"
@@ -74,7 +74,7 @@
                 android:textSize="15sp" />
 
             <EditText
-                android:id="@+id/editText2"
+                android:id="@+id/txtBabysName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
@@ -90,16 +90,17 @@
                 android:layout_marginRight="10dp"
                 android:layout_marginTop="10dp"
                 android:text="Height in CM"
-                android:textSize="15sp" />
+                android:textSize="15sp"
+                android:inputType="numberDecimal"/>
 
             <EditText
-                android:id="@+id/editText4"
+                android:id="@+id/txtHeight"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:ems="10"
-                android:inputType="textPersonName" />
+                android:inputType="numberDecimal" />
 
             <TextView
                 android:id="@+id/textView11"
@@ -112,13 +113,13 @@
                 android:textSize="15sp" />
 
             <EditText
-                android:id="@+id/editText5"
+                android:id="@+id/txtWieght"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:ems="10"
-                android:inputType="textPersonName" />
+                android:inputType="numberDecimal" />
 
             <TextView
                 android:id="@+id/textView12"
@@ -131,13 +132,13 @@
                 android:textSize="15sp" />
 
             <EditText
-                android:id="@+id/editText6"
+                android:id="@+id/txtMonth"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:ems="10"
-                android:inputType="textPersonName" />
+                android:inputType="numberDecimal" />
 
             <Button
                 android:id="@+id/btnUpdate"
