@@ -12,7 +12,7 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 ImageButton btnCalculate, btnStatistics, btnReminder, btnLogout;
-TextView ivProfile;
+TextView ivProfile, User;
 FirebaseAuth auth;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +24,9 @@ FirebaseAuth auth;
         btnReminder = (ImageButton) findViewById(R.id.btnReminder);
         btnLogout = (ImageButton) findViewById(R.id.btnLogout);
         ivProfile = (TextView) findViewById(R.id.txtProfile);
+        User = (TextView) findViewById(R.id.txtUser) ;
+        ProfileActivity pa = new ProfileActivity();
+        User.setText(pa.UserName);
        btnCalculate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

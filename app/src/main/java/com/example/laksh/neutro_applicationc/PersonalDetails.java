@@ -5,8 +5,7 @@ package com.example.laksh.neutro_applicationc;
  */
 
 public class PersonalDetails {
-    String Height, Weight, Age;
-    String babyName;
+    String Height=null, Weight=null, Age=null, babyName=null;
 
     public PersonalDetails(String babyname, String height, String weight, String age){
        babyName = babyname;

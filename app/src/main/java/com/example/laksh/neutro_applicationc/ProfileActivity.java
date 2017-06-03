@@ -26,7 +26,7 @@ import java.util.InputMismatchException;
 
 public class ProfileActivity extends AppCompatActivity {
 private ImageView ivProfile;
-private TextView viewUser;
+private TextView viewUser,txtUser;
 private Button btnUpdate;
 private EditText txtBabyName, txtHeight, txtWeight, txtMonth;
 private FirebaseAuth firebaseAuth;
@@ -34,7 +34,7 @@ private ProgressDialog progressDialog;
 private FirebaseUser User;
 private DatabaseReference dbReference;
 private  String userID;
-
+static  String UserName = "User";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,8 +42,8 @@ private  String userID;
 
 
         firebaseAuth = FirebaseAuth.getInstance();
-        dbReference = FirebaseDatabase.getInstance().getReference("Details").child(userID);
-        userID=firebaseAuth.getCurrentUser().getUid().toString();
+        dbReference = FirebaseDatabase.getInstance().getReference("Details");
+         userID=firebaseAuth.getCurrentUser().getUid().toString();
         System.out.println(userID);
         if (firebaseAuth.getCurrentUser() == null){
             finish();
@@ -59,6 +59,7 @@ private  String userID;
         txtWeight = (EditText) findViewById(R.id.txtWieght);
         txtMonth =(EditText) findViewById(R.id.txtMonth);
         viewUser = (TextView) findViewById(R.id.viewUser) ;
+        txtUser = (TextView) findViewById(R.id.txtUser);
         progressDialog = new ProgressDialog(this);
 
 
@@ -126,17 +127,24 @@ private  String userID;
     dbReference.addChildEventListener(new ChildEventListener() {
         @Override
         public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-            String value = dataSnapshot.getValue().toString().trim();
-            //txtBabyName.setText(value);
-            for (String retrieve : value.split("[{}=,]")){
-               dataArray.add(retrieve);
-                System.out.println(dataArray);
+           // System.out.println(userID);
+           // String value = dataSnapshot.getKey().toString().trim();
+         //   System.out.println(value);
+            if (dataSnapshot.getKey().equals(userID)){
+                String value = dataSnapshot.getValue().toString().trim();
+                System.out.println(value);
+                for (String retrieve : value.split("[{}=,]")){
+                    dataArray.add(retrieve);
+                    System.out.println(dataArray);
+                }
+                txtBabyName.setText(dataArray.get(2).toString());
+                txtHeight.setText(dataArray.get(4).toString());
+                txtWeight.setText(dataArray.get(6).toString());
+                txtMonth.setText(dataArray.get(8).toString());
+                viewUser.setText(dataArray.get(2).toString());
+                UserName = dataArray.get(2).toString();
             }
-            txtBabyName.setText(dataArray.get(2).toString());
-            txtHeight.setText(dataArray.get(4).toString());
-            txtWeight.setText(dataArray.get(6).toString());
-            txtMonth.setText(dataArray.get(8).toString());
-            viewUser.setText(dataArray.get(2).toString());
+
         }
 
         @Override

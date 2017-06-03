@@ -28,7 +28,7 @@
                 android:background="@drawable/pc" />
 
             <TextView
-                android:id="@+id/textView16"
+                android:id="@+id/txtUser"
                 android:layout_width="228dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="3dp"
@@ -116,12 +116,6 @@
                 android:saveEnabled="false"
                 android:weightSum="1">
 
-                <ImageView
-                    android:id="@+id/imageView"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="130dp"
-                    app:srcCompat="@drawable/babypng" />
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
